@@ -4,12 +4,13 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 
 
 
+
 class user(models.Model):
 
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20)
     password = models.CharField(max_length=20)
-    
+
 
 class teacher(models.Model):
 
