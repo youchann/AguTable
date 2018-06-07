@@ -1,0 +1,17 @@
+from django.urls import path
+from . import views
+from django.conf.urls import url
+from table.views import SampleTemplate,TableList
+
+
+app_name = 'table'
+
+urlpatterns = [
+    url(r'^$', SampleTemplate.as_view(), name='top'),
+    path('login/', views.Login.as_view(), name='login'),
+    path('logout/', views.Logout.as_view(), name='logout'),
+    path('tablelist/', views.TableList.as_view(), name='list'),
+    path('create/<int:pk>/', views.TableCreate.as_view(), name='create'),
+    path('update/<int:pk>/', views.TableUpdate.as_view(), name='update'),
+    path('delete/<int:pk>/', views.TableDelete.as_view(), name='delete'),
+]

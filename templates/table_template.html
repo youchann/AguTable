@@ -1,0 +1,381 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+
+    <title>AGUTABLE</title>
+</head>
+
+<body>
+  <!-- **************javascript************- -->
+  <!-- <script type="text/javascript">
+      function toListView(a,b){
+
+      }
+  </script> -->
+  <!-- ************************************* -->
+
+  <table border="1">
+      <tr>
+        <td></td>
+        <th>月</th>
+        <th>火</th>
+        <th>水</th>
+        <th>木</th>
+        <th>金</th>
+        <th>土</th>
+      </tr>
+      <tr id="1gen" class="class">
+        <th>1</th>
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 1 %}
+          {% if classes.TimeNum == 1 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 2 %}
+          {% if classes.TimeNum == 1 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 3 %}
+          {% if classes.TimeNum == 1 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 4 %}
+          {% if classes.TimeNum == 1 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 5 %}
+          {% if classes.TimeNum == 1 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 6 %}
+          {% if classes.TimeNum == 1 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+      </tr>
+      <tr id="2gen" class="class">
+        <th>2</th>
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 1 %}
+          {% if classes.TimeNum == 2 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 2 %}
+          {% if classes.TimeNum == 2 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 3 %}
+          {% if classes.TimeNum == 2 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 4 %}
+          {% if classes.TimeNum == 2 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 5 %}
+          {% if classes.TimeNum == 2 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 6 %}
+          {% if classes.TimeNum == 2 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+      </tr>
+      <tr id="3gen" class="class">
+        <th>3</th>
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 1 %}
+          {% if classes.TimeNum == 3 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 2 %}
+          {% if classes.TimeNum == 3 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 3 %}
+          {% if classes.TimeNum == 3 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 4 %}
+          {% if classes.TimeNum == 3 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 5 %}
+          {% if classes.TimeNum == 3 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 6 %}
+          {% if classes.TimeNum == 3 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+      </tr>
+      <tr id="4gen" class="class">
+        <th>4</th>
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 1 %}
+          {% if classes.TimeNum == 4 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 2 %}
+          {% if classes.TimeNum == 4 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 3 %}
+          {% if classes.TimeNum == 4 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 4 %}
+          {% if classes.TimeNum == 4 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 5 %}
+          {% if classes.TimeNum == 4 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 6 %}
+          {% if classes.TimeNum == 4 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+      </tr>
+      <tr id="5gen" class="class">
+        <th>5</th>
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 1 %}
+          {% if classes.TimeNum == 5 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 2 %}
+          {% if classes.TimeNum == 5 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 3 %}
+          {% if classes.TimeNum == 5 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 4 %}
+          {% if classes.TimeNum == 5 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 5 %}
+          {% if classes.TimeNum == 5 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+
+        <td>
+          {% for classes in classes %}
+          {% if classes.WeekNum == 6 %}
+          {% if classes.TimeNum == 5 %}
+            <p>{{classes.ClassName}}</p>
+            <p>{{classes.Place}}</p>
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+        </td>
+      </tr>
+    </table>
+
+</body>
+
+</html>

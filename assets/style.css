@@ -1,0 +1,22 @@
+@charset "utf-8";
+
+body{
+
+}
+
+table{
+  text-align: center;
+  margin: auto;
+  width: 70%;
+
+}
+
+table .class td{
+  width: 100px;
+  height: 100px;
+}
+
+table .class th{
+  width: 5px;
+  padding: 5px;
+}
