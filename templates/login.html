@@ -13,24 +13,35 @@
 
     <title>AGUTABLE</title>
 </head>
-<body>
 
-  <form action="" method="POST">
-      <div class="col-md-6 offset-md-3">
-          <div class="card">
-              <div class="card-body">
-                  {{ form.non_field_errors }}
-                  {% for field in form %}
-                      {{ field }}
-                      {{ field.errors }}
-                      <hr>
-                  {% endfor %}
-                  <button type="submit" class="btn btn-success btn-lg btn-block" >ログイン</button>
-                  <input type="hidden" name="next" value="{{ next }}" />
-                  {% csrf_token %}
-              </div>
-          </div>
-      </div>
-  </form>
+  <body>
+      <!-- <form action="login/" method="post">
+          {% csrf_token %}
+          {% if next %}
+          <input type="hidden" name="next" value="{{ next }}" />
+          {% endif %}
+          <input type="text" name="username" placeholder="ユーザID">
+          <input type="password" name="password" placeholder="パスワード">
+          <button type="submit" name="login">ログイン</button>
+      </form> -->
 
-</body>
+
+      <form action="" method="POST">
+    <div class="col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+                {{ form.non_field_errors }}
+                {% for field in form %}
+                    {{ field }}
+                    {{ field.errors }}
+                    <hr>
+                {% endfor %}
+                <button type="submit" class="btn btn-success btn-lg btn-block" >ログイン</button>
+                <input type="hidden" name="next" value="{{ next }}" />
+                {% csrf_token %}
+            </div>
+        </div>
+    </div>
+</form>
+  </body>
+</html>
