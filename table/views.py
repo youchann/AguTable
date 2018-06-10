@@ -13,7 +13,7 @@ from django.contrib.auth.views import (
 )
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView,ListView,UpdateView,CreateView,DeleteView
-from .models import table,user,teacher,classes
+from .models import table,user,teacher,classes,time,week
 from django.views import generic
 from .forms import LoginForm
 
@@ -44,15 +44,20 @@ class SampleTemplate(TemplateView):
     """時間割ページ"""
     template_name = "table_template.html"
 
-    user = User
-
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         tables = {
                 'tables': table.objects.all(),
+                'times': time.objects.all(),
+                'weeks': week.objects.all(),
              }
+        # times = {
+        #         'times': time.objects.all(),
+        #      }
+        # weeks = {
+        #         'weeks': week.objects.all(),
+        #      }
         return tables
 
 class Login(LoginView):

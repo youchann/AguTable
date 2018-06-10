@@ -15,378 +15,53 @@
 </head>
 
 <body>
-  <!-- **************javascript************- -->
-  <!-- <script type="text/javascript">
-      function toListView(a,b){
-
-      }
-  </script> -->
-  <!-- ************************************* -->
 
   {% if user.is_authenticated %}
 
   <a class="nav-item nav-link" href="{% url 'table:logout' %}">ログアウト</a>
 
-  {% for classes in tables %}
 
-  {% if classes.userId.id == user.id %}
-    <p>{{classes.classId.name}}</p>
-  {% endif %}
+  <table border="1">
+    <tr>
+      <td></td>
+      <th>月</th>
+      <th>火</th>
+      <th>水</th>
+      <th>木</th>
+      <th>金</th>
+      <th>土</th>
+    </tr>
 
-  {% endfor %}
+    {% for t in times %}
+    <tr>
+      <th>{{ t.num }}</th>
+      {% for w in weeks %}
+        <td>
+        {% for classes in tables %}
 
-  <!-- <table border="1">
-      <tr>
-        <td></td>
-        <th>月</th>
-        <th>火</th>
-        <th>水</th>
-        <th>木</th>
-        <th>金</th>
-        <th>土</th>
-      </tr>
-      <tr id="1gen" class="class">
-        <th>1</th>
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 1 %}
-          {% if classes.TimeNum == 1 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
+          {% if classes.userId.id == user.id %}
+            {% if classes.classId.weekNum == w.num %}
+              {% if classes.classId.timeNum == t.num %}
+                <p>{{classes.classId.name}}</p>
+                <p>{{classes.classId.place}}</p>
+              {% else %}
 
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 2 %}
-          {% if classes.TimeNum == 1 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
+              {% endif %}
+            {% endif %}
           {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
 
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 3 %}
-          {% if classes.TimeNum == 1 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
+        {% endfor %}
         </td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
 
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 4 %}
-          {% if classes.TimeNum == 1 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
 
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 5 %}
-          {% if classes.TimeNum == 1 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
 
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 6 %}
-          {% if classes.TimeNum == 1 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
 
-      </tr>
-      <tr id="2gen" class="class">
-        <th>2</th>
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 1 %}
-          {% if classes.TimeNum == 2 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
 
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 2 %}
-          {% if classes.TimeNum == 2 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
+  </table>
 
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 3 %}
-          {% if classes.TimeNum == 2 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 4 %}
-          {% if classes.TimeNum == 2 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 5 %}
-          {% if classes.TimeNum == 2 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 6 %}
-          {% if classes.TimeNum == 2 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-      </tr>
-      <tr id="3gen" class="class">
-        <th>3</th>
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 1 %}
-          {% if classes.TimeNum == 3 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 2 %}
-          {% if classes.TimeNum == 3 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 3 %}
-          {% if classes.TimeNum == 3 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 4 %}
-          {% if classes.TimeNum == 3 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 5 %}
-          {% if classes.TimeNum == 3 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 6 %}
-          {% if classes.TimeNum == 3 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-      </tr>
-      <tr id="4gen" class="class">
-        <th>4</th>
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 1 %}
-          {% if classes.TimeNum == 4 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 2 %}
-          {% if classes.TimeNum == 4 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 3 %}
-          {% if classes.TimeNum == 4 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 4 %}
-          {% if classes.TimeNum == 4 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 5 %}
-          {% if classes.TimeNum == 4 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 6 %}
-          {% if classes.TimeNum == 4 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-      </tr>
-      <tr id="5gen" class="class">
-        <th>5</th>
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 1 %}
-          {% if classes.TimeNum == 5 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 2 %}
-          {% if classes.TimeNum == 5 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 3 %}
-          {% if classes.TimeNum == 5 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 4 %}
-          {% if classes.TimeNum == 5 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 5 %}
-          {% if classes.TimeNum == 5 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-
-        <td>
-          {% for classes in classes %}
-          {% if classes.WeekNum == 6 %}
-          {% if classes.TimeNum == 5 %}
-            <p>{{classes.ClassName}}</p>
-            <p>{{classes.Place}}</p>
-          {% endif %}
-          {% endif %}
-          {% endfor %}
-        </td>
-      </tr>
-    </table> -->
 
   {% else %}
             <li class="nav-item">

@@ -128,3 +128,10 @@ class table(models.Model):
     id = models.IntegerField(primary_key=True)
     userId = models.ForeignKey(user,on_delete=models.DO_NOTHING)
     classId = models.ForeignKey(classes,on_delete=models.DO_NOTHING)
+
+##########templatesの中でfor文を回すためのテーブル##############
+class time(models.Model):
+    num = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(6)])
+
+class week(models.Model):
+    num = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(6)])
