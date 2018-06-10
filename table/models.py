@@ -16,7 +16,7 @@ from django.contrib.auth.base_user import BaseUserManager
 
 
 class AuthUserManager(BaseUserManager):
-    """ユーザーマネージャー."""
+    """ユーザーマネージャー"""
 
     use_in_migrations = True
 

@@ -4,10 +4,11 @@ from django.http.response import HttpResponse
 
 
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import (
     LoginView, LogoutView
 )
+from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView,ListView,UpdateView,CreateView,DeleteView
 from .models import table,user,teacher,classes
 from django.views import generic
@@ -21,6 +22,17 @@ from .forms import LoginForm
 #     }
 #     return render(request, 'table_template.html', table)
 
+class OnlyYouMixin(UserPassesTestMixin):
+    raise_exception = True
+
+    #条件文↓
+    def test_func(self):
+        # 今ログインしてるユーザーのpkと、そのユーザー情報ページのpkが同じか、又はスーパーユーザーなら許可
+        user = self.request.user
+        return user.pk == self.kwargs['pk'] or user.is_superuser
+
+
+# @login_required
 class SampleTemplate(TemplateView):
     """時間割ページ"""
     template_name = "table_template.html"

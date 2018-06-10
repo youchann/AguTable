@@ -131,9 +131,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 #ログイン処理
-LOGIN_ERROR_URL = 'login'
-LOGIN_URL = 'login/'
-LOGIN_REDIRECT_URL = "r'^$'"
+LOGIN_ERROR_URL = 'table:login'
+LOGIN_URL = 'table:login'
+LOGIN_REDIRECT_URL = 'table:top'
 AUTH_USER_MODEL = 'table.user'
 
 

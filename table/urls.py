@@ -7,7 +7,7 @@ from table.views import SampleTemplate,TableList
 app_name = 'table'
 
 urlpatterns = [
-    url(r'^$', SampleTemplate.as_view(), name='top'),
+    path('', SampleTemplate.as_view(), name='top'),
     path('login/', views.Login.as_view(), name='login'),
     path('logout/', views.Logout.as_view(), name='logout'),
     path('tablelist/', views.TableList.as_view(), name='list'),
