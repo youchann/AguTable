@@ -2,6 +2,9 @@ from django.shortcuts import render
 
 from django.http.response import HttpResponse
 
+from django.contrib.auth import get_user_model
+
+
 
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -22,6 +25,10 @@ from .forms import LoginForm
 #     }
 #     return render(request, 'table_template.html', table)
 
+User = get_user_model()
+
+
+
 class OnlyYouMixin(UserPassesTestMixin):
     raise_exception = True
 
@@ -37,10 +44,14 @@ class SampleTemplate(TemplateView):
     """時間割ページ"""
     template_name = "table_template.html"
 
+    user = User
+
+
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         tables = {
-                'classes': table.objects.all(),
+                'tables': table.objects.all(),
              }
         return tables
 

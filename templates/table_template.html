@@ -27,7 +27,15 @@
 
   <a class="nav-item nav-link" href="{% url 'table:logout' %}">ログアウト</a>
 
-  <table border="1">
+  {% for classes in tables %}
+
+  {% if classes.userId.id == user.id %}
+    <p>{{classes.classId.name}}</p>
+  {% endif %}
+
+  {% endfor %}
+
+  <!-- <table border="1">
       <tr>
         <td></td>
         <th>月</th>
@@ -378,7 +386,7 @@
           {% endfor %}
         </td>
       </tr>
-    </table>
+    </table> -->
 
   {% else %}
             <li class="nav-item">
