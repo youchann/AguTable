@@ -16,25 +16,7 @@
 
 <body>
 
-  <script type = "text/javascript">
-  // ここにコードを書く
-    function toListView(t, w) {
 
-    console.log(t);
-    console.log(w);
-
-    // weekNumの保持
-    sessionStorage.setItem('week', w);
-    window.sessionStorage.setItem('week', w);
-    sessionStorage.week = w
-
-    // timeNumの保持
-    sessionStorage.setItem('time', t);
-    window.sessionStorage.setItem('time', t);
-    sessionStorage.time = t
-
-  }
-  </script>
 
 
 
@@ -59,22 +41,23 @@
     <tr>
       <th>{{ t.num }}</th>
       {% for w in weeks %}
-        <td onclick="toListView(this.parentNode.rowIndex, this.cellIndex)" >
+        <td>
         {% for classes in tables %}
 
           {% if classes.userId.id == user.id %}
             {% if classes.classId.weekNum == w.num %}
               {% if classes.classId.timeNum == t.num %}
+                <a href="/tablelist/{{ w.num }}/{{ t.num }}/1/">
                 <p>{{classes.classId.name}}</p>
                 <p>{{classes.classId.place}}</p>
               {% else %}
-                
+                <a href="/tablelist/{{ w.num }}/{{ t.num }}/0/">
               {% endif %}
             {% endif %}
           {% endif %}
 
         {% endfor %}
-        </td>
+      </a></td>
       {% endfor %}
     </tr>
     {% endfor %}

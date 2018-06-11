@@ -62,13 +62,19 @@ class Logout(LoginRequiredMixin, LogoutView):
 
 class TableList(ListView):
     """時間割リスト表示ページ"""
-    model = table
+    template_name = 'table-list.html'
 
-    template_name = "table_list.html"
+    model = classes
+
+
+    def index(request, week):
+        week = int(week)
+        return week
+
 
 
     paginate_by = 10
-    context_object_name = "tables"
+    context_object_name = "classes"
 
 class TableCreate(CreateView):
     """追加ページ"""
