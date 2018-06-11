@@ -19,11 +19,6 @@ from .forms import LoginForm
 
 
 
-# def index(request):
-#     tables = {
-#         'classes': table.objects.all(),
-#     }
-#     return render(request, 'table_template.html', table)
 
 User = get_user_model()
 
@@ -47,18 +42,13 @@ class SampleTemplate(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
-        tables = {
+        data = {
                 'tables': table.objects.all(),
                 'times': time.objects.all(),
                 'weeks': week.objects.all(),
              }
-        # times = {
-        #         'times': time.objects.all(),
-        #      }
-        # weeks = {
-        #         'weeks': week.objects.all(),
-        #      }
-        return tables
+
+        return data
 
 class Login(LoginView):
     """ログインページ"""

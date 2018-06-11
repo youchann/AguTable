@@ -16,6 +16,29 @@
 
 <body>
 
+  <script type = "text/javascript">
+  // ここにコードを書く
+    function toListView(t, w) {
+
+    console.log(t);
+    console.log(w);
+
+    // weekNumの保持
+    sessionStorage.setItem('week', w);
+    window.sessionStorage.setItem('week', w);
+    sessionStorage.week = w
+
+    // timeNumの保持
+    sessionStorage.setItem('time', t);
+    window.sessionStorage.setItem('time', t);
+    sessionStorage.time = t
+
+  }
+  </script>
+
+
+
+
   {% if user.is_authenticated %}
 
   <a class="nav-item nav-link" href="{% url 'table:logout' %}">ログアウト</a>
@@ -36,7 +59,7 @@
     <tr>
       <th>{{ t.num }}</th>
       {% for w in weeks %}
-        <td>
+        <td onclick="toListView(this.parentNode.rowIndex, this.cellIndex)" >
         {% for classes in tables %}
 
           {% if classes.userId.id == user.id %}
@@ -45,7 +68,7 @@
                 <p>{{classes.classId.name}}</p>
                 <p>{{classes.classId.place}}</p>
               {% else %}
-
+                
               {% endif %}
             {% endif %}
           {% endif %}
@@ -55,11 +78,6 @@
       {% endfor %}
     </tr>
     {% endfor %}
-
-
-
-
-
   </table>
 
 
