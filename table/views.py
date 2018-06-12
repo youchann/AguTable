@@ -66,14 +66,17 @@ class TableList(ListView):
 
     model = classes
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(context)
+        return context
 
-    def index(request, week):
-        week = int(week)
-        return week
+    def get_queryset(self):
+        return classes.objects.filter(weekNum=self.kwargs['week'],
+                                      timeNum=self.kwargs['time'])
 
 
-
-    paginate_by = 10
+    paginate_by = 5
     context_object_name = "classes"
 
 class TableCreate(CreateView):
