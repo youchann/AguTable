@@ -79,6 +79,42 @@ class TableList(ListView):
     paginate_by = 5
     context_object_name = "classes"
 
+
+class TableUpdate(TemplateView):
+    """更新ページ"""
+    template_name = "table-update.html"
+
+    model = table
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
+        data = {
+                'tables': table.objects.all(),
+                'times': time.objects.all(),
+                'weeks': week.objects.all(),
+             }
+
+        return data
+
+    def get_queryset(self):
+        table.objects.filter(userId=self.kwargs['id'],
+                             classId__weekNum=self.kwargs['week'],
+                             classId__timeNum=self.kwargs['time']).delete()
+
+        return table.objects.update_or_create(userId=self.kwargs['id'],classId=self.kwargs['classid'])
+
+
+
+
+
+        # return classes.objects.update_or_create(
+        #     weekNum=self.kwargs['week'],
+        #     timeNum=self.kwargs['time'],
+        #     defaults={'userId': user.id},
+        #     )
+
+
 class TableCreate(CreateView):
     """追加ページ"""
     model = table
@@ -86,12 +122,12 @@ class TableCreate(CreateView):
 
     template_name = "table_create.html"
 
-class TableUpdate(UpdateView):
-    """更新ページ"""
-    model = table
-    fields = ("id", "userId", "classId")
-
-    template_name = "table_update.html"
+# class TableUpdate(UpdateView):
+#     """更新ページ"""
+#     model = table
+#     fields = ("id", "userId", "classId")
+#
+#     template_name = "table_update.html"
 
 
 class TableDelete(DeleteView):

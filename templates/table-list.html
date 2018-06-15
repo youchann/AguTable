@@ -21,9 +21,9 @@ aaaaa
 
 {% for class in classes %}
 
-    <h2 class="post-title">
+    <p><a href="/update/{{ user.id }}/{{ class.weekNum }}/{{ class.timeNum }}/{{ class.id }}/">
         {{ class.name }}
-    </h2>
+    </a></p>
 
 {% endfor %}
 

@@ -129,6 +129,12 @@ class table(models.Model):
     userId = models.ForeignKey(user,on_delete=models.DO_NOTHING)
     classId = models.ForeignKey(classes,on_delete=models.DO_NOTHING)
 
+
+
+
+
+
+
 ##########templatesの中でfor文を回すためのテーブル##############
 class time(models.Model):
     num = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(6)])
