@@ -87,6 +87,8 @@ class TableUpdate(TemplateView):
     model = table
 
 
+
+############ ココが変です　############################
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         data = {
