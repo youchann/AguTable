@@ -21,7 +21,8 @@ aaaaa
 
 {% for class in classes %}
 
-    <p><a href="/update/{{ user.id }}/{{ class.weekNum }}/{{ class.timeNum }}/{{ class.id }}/">
+    <p>
+      <a href="{% url 'table:update' %}?userId={{ user.id }}?week={{ class.weekNum }}?time={{ class.timeNum }}?classId={{ class.id }}">
         {{ class.name }}
     </a></p>
 
@@ -32,8 +33,7 @@ aaaaa
     <ul class="pagination">
         {% if page_obj.has_previous %}
             <li>
-                <a href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
+                <a href="?page={{ page_obj.previous_page_number }}">
                 </a>
             </li>
         {% endif %}

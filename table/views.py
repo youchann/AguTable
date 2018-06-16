@@ -79,7 +79,9 @@ class TableList(ListView):
     paginate_by = 5
     context_object_name = "classes"
 
-
+#########################################
+# ↓ここです！！！！！！！！！！！！！！！！！
+#########################################
 class TableUpdate(TemplateView):
     """更新ページ"""
     template_name = "table-update.html"
@@ -88,7 +90,6 @@ class TableUpdate(TemplateView):
 
 
 
-############ ココが変です　############################
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs) # はじめに継承元のメソッドを呼び出す
         data = {
@@ -99,22 +100,42 @@ class TableUpdate(TemplateView):
 
         return data
 
-    def get_queryset(self):
-        table.objects.filter(userId=self.kwargs['id'],
-                             classId__weekNum=self.kwargs['week'],
-                             classId__timeNum=self.kwargs['time']).delete()
-
-        return table.objects.update_or_create(userId=self.kwargs['id'],classId=self.kwargs['classid'])
 
 
 
 
+    def get(self, request, **kwargs):
+        classid = request.GET.get("classId")
 
-        # return classes.objects.update_or_create(
-        #     weekNum=self.kwargs['week'],
-        #     timeNum=self.kwargs['time'],
-        #     defaults={'userId': user.id},
-        #     )
+        data = {
+                'classid': classid
+             }
+        return self.render_to_response(data)
+
+    # def index(self,request):
+    #     userId = request.GET.get('userId')
+    #     week = request.GET.get('week')
+    #     time = request.GET.get('time')
+    #     classId = request.GET.get('classId')
+    #
+    #     userid = int(userId)
+    #     week = int(week)
+    #     time = int(time)
+    #     userid = int(classId)
+    #
+    #     table.objects.filter(userId=userid,
+    #                          classId__weekNum=week,
+    #                          classId__timeNum=time).delete()
+    #
+    #     return userid
+
+    # def get_queryset(self):
+    #     table.objects.filter(userId=self.kwargs['id'],
+    #                          classId__weekNum=self.kwargs['week'],
+    #                          classId__timeNum=self.kwargs['time']).delete()
+    #
+    #     return table.objects.update_or_create(userId=self.kwargs['id'],classId=self.kwargs['classid'])
+
 
 
 class TableCreate(CreateView):
