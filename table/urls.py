@@ -15,5 +15,5 @@ urlpatterns = [
     # url(r'^update/$',TableUpdate.as_view(), name='update'),
     # path('create/<int:pk>/', views.TableCreate.as_view(), name='create'),
     # path('update/<int:pk>/', views.TableUpdate.as_view(), name='update'),
-    path('delete/<int:pk>/', views.TableDelete.as_view(), name='delete'),
+    # path('delete/<int:pk>/', views.TableDelete.as_view(), name='delete'),
 ]

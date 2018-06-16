@@ -109,51 +109,24 @@ class TableUpdate(TemplateView):
         week = kwargs['week']
         classid = kwargs['classid']
 
-        # table.objects.filter(userId__id=userid,
-        #                      classId__weekNum=week,
-        #                      classId__timeNum=time).delete()
+        table.objects.filter(userId__id=userid,
+                             classId__weekNum=week,
+                             classId__timeNum=time).delete()
 
-        # table.objects.update_or_create(userId__id=userid,
-        #                                classId__id=classid)
 
         table.objects.update_or_create(userId=user(id=userid),
                                        classId=classes(id=classid))
 
 
-        pass
-
-    # def index(self,request):
-    #     userId = request.GET.get('userId')
-    #     week = request.GET.get('week')
-    #     time = request.GET.get('time')
-    #     classId = request.GET.get('classId')
-    #
-    #     userid = int(userId)
-    #     week = int(week)
-    #     time = int(time)
-    #     userid = int(classId)
-    #
-    #     table.objects.filter(userId=userid,
-    #                          classId__weekNum=week,
-    #                          classId__timeNum=time).delete()
-    #
-    #     return userid
-
-    # def get_queryset(self):
-    #     table.objects.filter(userId=self.kwargs['id'],
-    #                          classId__weekNum=self.kwargs['week'],
-    #                          classId__timeNum=self.kwargs['time']).delete()
-    #
-    #     return table.objects.update_or_create(userId=self.kwargs['id'],classId=self.kwargs['classid'])
+        return super().get(request, **kwargs)
 
 
-
-class TableCreate(CreateView):
-    """追加ページ"""
-    model = table
-    fields = ("id", "userId", "classId")
-
-    template_name = "table_create.html"
+# class TableCreate(CreateView):
+#     """追加ページ"""
+#     model = table
+#     fields = ("id", "userId", "classId")
+#
+#     template_name = "table_create.html"
 
 # class TableUpdate(UpdateView):
 #     """更新ページ"""
@@ -163,11 +136,11 @@ class TableCreate(CreateView):
 #     template_name = "table_update.html"
 
 
-class TableDelete(DeleteView):
-    """削除ページ"""
-    model = table
-
-    template_name = "table_delete.html"
+# class TableDelete(DeleteView):
+#     """削除ページ"""
+#     model = table
+#
+#     template_name = "table_delete.html"
 
 # @login_required
 # def help(request):
