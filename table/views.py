@@ -79,9 +79,7 @@ class TableList(ListView):
     paginate_by = 5
     context_object_name = "classes"
 
-#########################################
-# ↓ここです！！！！！！！！！！！！！！！！！
-#########################################
+
 class TableUpdate(TemplateView):
     """更新ページ"""
     template_name = "table-update.html"
@@ -105,12 +103,24 @@ class TableUpdate(TemplateView):
 
 
     def get(self, request, **kwargs):
-        classid = request.GET.get("classId")
+        super().get(request, **kwargs)
+        userid = kwargs['id']
+        time = kwargs['time']
+        week = kwargs['week']
+        classid = kwargs['classid']
 
-        data = {
-                'classid': classid
-             }
-        return self.render_to_response(data)
+        # table.objects.filter(userId__id=userid,
+        #                      classId__weekNum=week,
+        #                      classId__timeNum=time).delete()
+
+        # table.objects.update_or_create(userId__id=userid,
+        #                                classId__id=classid)
+
+        table.objects.update_or_create(userId=user(id=userid),
+                                       classId=classes(id=classid))
+
+
+        pass
 
     # def index(self,request):
     #     userId = request.GET.get('userId')
