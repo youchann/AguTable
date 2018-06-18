@@ -11,6 +11,8 @@
 
     <link href="{% static 'style.css' %}" rel="stylesheet">
 
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
     <title>AGUTABLE</title>
 </head>
 
@@ -42,16 +44,16 @@
       <th>{{ t.num }}</th>
       {% for w in weeks %}
         <td>
+        <a href="/tablelist/{{ w.num }}/{{ t.num }}/" class="henkou">
         {% for classes in tables %}
 
           {% if classes.userId.id == user.id %}
             {% if classes.classId.weekNum == w.num %}
               {% if classes.classId.timeNum == t.num %}
-                <a href="/tablelist/{{ w.num }}/{{ t.num }}/1/">
+                <div class="kamoku">
                 <p>{{classes.classId.name}}</p>
                 <p>{{classes.classId.place}}</p>
-              {% else %}
-                <a href="/tablelist/{{ w.num }}/{{ t.num }}/0/">
+                </div>
               {% endif %}
             {% endif %}
           {% endif %}
@@ -73,8 +75,9 @@
   {% endif %}
 
 
-
-
+<script>
+    $(".henkou:not(:has(.kamoku))").text("-")
+</script>
 
 </body>
 

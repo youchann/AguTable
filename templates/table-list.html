@@ -17,14 +17,20 @@
 <body>
 
 
-aaaaa
 
 {% for class in classes %}
+  {% if forloop.first %}
 
-    <p><a href="/update/{{ user.id }}/{{ class.weekNum }}/{{ class.timeNum }}/{{ class.id }}/">
+  <p><a href="/delete/{{ user.id }}/{{ class.weekNum }}/{{ class.timeNum }}/">
+  削除する</a></p>
 
-        {{ class.name }}
-    </a></p>
+  {% endif %}
+
+
+  <p><a href="/update/{{ user.id }}/{{ class.weekNum }}/{{ class.timeNum }}/{{ class.id }}/">
+
+      {{ class.name }}
+  </a></p>
 
 {% endfor %}
 

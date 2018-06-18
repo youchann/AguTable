@@ -121,6 +121,30 @@ class TableUpdate(TemplateView):
         return super().get(request, **kwargs)
 
 
+
+class TableDelete(TemplateView):
+    """削除ページ"""
+    template_name = "table-delete.html"
+
+    model = table
+
+
+    def get(self, request, **kwargs):
+        super().get(request, **kwargs)
+        userid = kwargs['id']
+        time = kwargs['time']
+        week = kwargs['week']
+
+        table.objects.filter(userId__id=userid,
+                             classId__weekNum=week,
+                             classId__timeNum=time).delete()
+
+
+
+
+        return super().get(request, **kwargs)
+
+
 # class TableCreate(CreateView):
 #     """追加ページ"""
 #     model = table
