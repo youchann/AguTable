@@ -15,7 +15,10 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView,ListView,UpdateView,CreateView,DeleteView
 from .models import table,user,teacher,classes,time,week
 from django.views import generic
-from .forms import LoginForm
+from .forms import LoginForm, UserCreateForm
+
+from django.urls import reverse_lazy
+
 
 
 
@@ -34,7 +37,20 @@ class OnlyYouMixin(UserPassesTestMixin):
         return user.pk == self.kwargs['pk'] or user.is_superuser
 
 
-# @login_required
+class UserCreate(generic.CreateView):
+    """ユーザー登録"""
+    template_name = 'user-create.html'
+    form_class = UserCreateForm
+    success_url = reverse_lazy("table:user_create_complete")
+
+
+
+class UserCreateComplete(generic.TemplateView):
+    """メール内URLアクセス後のユーザー本登録"""
+    template_name = 'user_create_complete.html'
+
+
+
 class SampleTemplate(TemplateView):
     """時間割ページ"""
     template_name = "table_template.html"
@@ -143,29 +159,3 @@ class TableDelete(TemplateView):
 
 
         return super().get(request, **kwargs)
-
-
-# class TableCreate(CreateView):
-#     """追加ページ"""
-#     model = table
-#     fields = ("id", "userId", "classId")
-#
-#     template_name = "table_create.html"
-
-# class TableUpdate(UpdateView):
-#     """更新ページ"""
-#     model = table
-#     fields = ("id", "userId", "classId")
-#
-#     template_name = "table_update.html"
-
-
-# class TableDelete(DeleteView):
-#     """削除ページ"""
-#     model = table
-#
-#     template_name = "table_delete.html"
-
-# @login_required
-# def help(request):
-#     return HttpResponse("Member Only Help Page")
