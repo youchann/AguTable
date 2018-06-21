@@ -46,7 +46,7 @@ class UserCreate(generic.CreateView):
 
 
 class UserCreateComplete(generic.TemplateView):
-    """メール内URLアクセス後のユーザー本登録"""
+    """登録後の画面"""
     template_name = 'user_create_complete.html'
 
 
@@ -140,7 +140,7 @@ class TableUpdate(TemplateView):
 
 class TableDelete(TemplateView):
     """削除ページ"""
-    template_name = "table-delete.html"
+    template_name = "table_delete.html"
 
     model = table
 

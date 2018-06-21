@@ -17,27 +17,11 @@
     <title>AGUTABLE</title>
 </head>
 
-  <body>
+<body>
+削除しました。
+<a href="{% url 'table:top' %}">トップへ</a>
 
-      <form action="{% url 'table:login' %}" method="POST">
-    <div class="col-md-6 offset-md-3">
-        <div class="card">
-            <div class="card-body">
-                {{ form.non_field_errors }}
-                {% for field in form %}
-                    {{ field }}
-                    {{ field.errors }}
-                    <hr>
-                {% endfor %}
-                <button type="submit" class="btn btn-success btn-lg btn-block" >ログイン</button>
-                <input type="hidden" name="next" value="{{ next }}" />
-                {% csrf_token %}
-            </div>
-        </div>
-    </div>
-</form>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" integrity="sha384-u/bQvRA/1bobcXlcEYpsEdFVK/vJs3+T+nXLsBYJthmdBuavHvAW6UsmqO2Gd/F9" crossorigin="anonymous"></script>
-  </body>
-</html>
+</body>
