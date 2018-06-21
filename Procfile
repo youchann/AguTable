@@ -1,1 +1,1 @@
-web: unicorn tables.wsgi —log-file -
+web: gunicorn tables.wsgi —log-file -
