@@ -1,0 +1,4 @@
+*.pyc
+agutable
+staticfiles
+db.sqlite3
