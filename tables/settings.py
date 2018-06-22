@@ -146,6 +146,7 @@ STATICFILES_DIRS = (
 
 
 
+##################### 以下はherokuのための記述 ###########################
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
