@@ -12,14 +12,10 @@ from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.base_user import BaseUserManager
 
 
-
-
-
 class AuthUserManager(BaseUserManager):
     """ユーザーマネージャー"""
 
     use_in_migrations = True
-
 
     def _create_user(self, name, password, **extra_fields):
         """
@@ -40,14 +36,11 @@ class AuthUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-
-
-    def create_user(self,name, password=None, **extra_fields):
+    def create_user(self, name, password=None, **extra_fields):
         """is_staff(管理サイトにログインできるか)と、is_superuer(全ての権限)をFalseに"""
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
         return self._create_user(name, password, **extra_fields)
-
 
     def create_superuser(self, name, password, **extra_fields):
         """スーパーユーザーは、is_staffとis_superuserをTrueに"""
@@ -62,11 +55,11 @@ class AuthUserManager(BaseUserManager):
         return self._create_user(name, password, **extra_fields)
 
 
-
 class user(AbstractBaseUser, PermissionsMixin):
     """
     ユーザ情報を管理する
     """
+
     class Meta:
         verbose_name = 'ユーザ'
         verbose_name_plural = 'ユーザ'
@@ -78,8 +71,6 @@ class user(AbstractBaseUser, PermissionsMixin):
         :return: 苗字
         """
         return self.name
-
-
 
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20, unique=True)
@@ -99,7 +90,6 @@ class user(AbstractBaseUser, PermissionsMixin):
         ),
     )
 
-
     USERNAME_FIELD = 'name'
     REQUIRED_FIELDS = []
     objects = AuthUserManager()
@@ -107,37 +97,33 @@ class user(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.name
 
-class teacher(models.Model):
 
+class teacher(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20)
 
 
 class classes(models.Model):
-
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20)
     weekNum = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(6)])
     timeNum = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(6)])
-    teacherId = models.ForeignKey(teacher,on_delete=models.DO_NOTHING)
+    teacherId = models.ForeignKey(teacher, on_delete=models.DO_NOTHING)
     place = models.CharField(max_length=10)
 
 
 class table(models.Model):
-
     id = models.IntegerField(primary_key=True)
-    userId = models.ForeignKey(user,on_delete=models.DO_NOTHING)
-    classId = models.ForeignKey(classes,on_delete=models.DO_NOTHING)
-
-
-
-
-
+    userId = models.ForeignKey(user, on_delete=models.DO_NOTHING)
+    classId = models.ForeignKey(classes, on_delete=models.DO_NOTHING)
 
 
 ##########templatesの中でfor文を回すためのテーブル##############
+
+
 class time(models.Model):
     num = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(6)])
+
 
 class week(models.Model):
     num = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(6)])
